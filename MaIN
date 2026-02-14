@@ -1,0 +1,17 @@
+# Bem-vindo ao GifHub! Complete o código para desbloquear o acesso
+# Dica: use indexação e join para revelar o código secreto
+
+def gerar_codigo(partes, indices):
+    # Complete a linha abaixo para gerar o código correto
+    return ________
+
+partes = ["x", "&t=", "y", "1", "s", "z"]
+indices = [1, 3, 4]  # Ordem que precisamos para o código final
+
+codigo = gerar_codigo(partes, indices)
+
+# Verificação automática
+if codigo == "&t=1s":
+    print("Código correto! Acesso concedido:", codigo)
+else:
+    print("Código incorreto. Tente novamente.")
