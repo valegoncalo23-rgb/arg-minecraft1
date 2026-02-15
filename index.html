@@ -26,28 +26,49 @@
         a:hover {
             text-decoration: underline;
         }
+        .typed {
+            display: inline-block;
+            border-right: 2px solid #00ff00;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 50%, 100% { border-color: #00ff00; }
+            25%, 75% { border-color: transparent; }
+        }
     </style>
 </head>
 <body>
 
 <div id="conteudo">
     <h2>INSERE O CÓDIGO</h2>
-
     <input type="password" id="codigo" placeholder="Código">
     <br><br>
     <button onclick="verificar()">ENTRAR</button>
-
     <p id="mensagem"></p>
 </div>
 
 <script>
 function verificar() {
-    const codigo = document.getElementById("codigo").value;
-    if (codigo === "2 == 0") {
-        document.getElementById("conteudo").innerHTML = `
-            <h2>ACESSO CONCEDIDO</h2>
-            <p>&amp;t=1s</p>
-        `;
+    let codigo = document.getElementById("codigo").value;
+    // Remove espaços extras para facilitar digitação
+    codigo = codigo.replace(/\s+/g, '');
+
+    // Código secreto sem espaços
+    if (codigo === "2==0") {
+        // Mostra mensagem com efeito de digitação
+        let msg = "ACESSO CONCEDIDO";
+        let container = document.getElementById("conteudo");
+        container.innerHTML = '<p id="typedText" class="typed"></p>';
+        let i = 0;
+        let typing = setInterval(() => {
+            if (i < msg.length) {
+                document.getElementById("typedText").innerText += msg[i];
+                i++;
+            } else {
+                clearInterval(typing);
+                container.innerHTML += '<p>&amp;t=1s</p>';
+            }
+        }, 100);
     } else {
         document.getElementById("mensagem").innerText = "CÓDIGO INCORRETO";
     }
