@@ -50,12 +50,10 @@
 <script>
 function verificar() {
     let codigo = document.getElementById("codigo").value;
-    // Remove espaços extras para facilitar digitação
-    codigo = codigo.replace(/\s+/g, '');
+    // Remove tudo que não seja número ou '='
+    codigo = codigo.replace(/[^0-9=]/g, '');
 
-    // Código secreto sem espaços
     if (codigo === "2==0") {
-        // Mostra mensagem com efeito de digitação
         let msg = "ACESSO CONCEDIDO";
         let container = document.getElementById("conteudo");
         container.innerHTML = '<p id="typedText" class="typed"></p>';
